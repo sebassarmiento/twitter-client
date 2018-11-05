@@ -1,0 +1,16 @@
+.tweet{
+    display: flex;
+    background-color: white;
+    border: 2px solid black;
+    align-items: center;
+    border-radius: 8px;
+    margin: 6px 0px;
+}
+
+.tweet img{
+    margin: 12px 12px;
+}
+
+.tweet .tweet-data{
+    flex: 5;
+}
