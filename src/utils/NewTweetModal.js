@@ -31,14 +31,15 @@ class NewTweet extends Component {
             },
             body: JSON.stringify({
                 tweet: this.state.tweet,
-                username: this.props.username
+                username: this.props.username,
+                userId: this.props.userId
             })
         })
             .then(d => d.json())
             .then(result => {
                 console.log(result)
                 if (result.message === 'Posted tweet successfully') {
-                    this.setState({ succesfullTweet: true })
+                    this.setState({ succesfullTweet: true, tweet: '' })
                 }
             })
             .catch(err => {
@@ -47,18 +48,19 @@ class NewTweet extends Component {
     }
 
     render() {
+
+        const tweetBtn = this.state.tweet.length > 0 ? <button onClick={() => this.postTweet()} className="new-tweet-btn" >Tweet</button> : <button className="new-tweet-btn-disabled" >Tweet</button>
+
         return (
             <div className="new-tweet-background">
                 <div className="new-tweet-container" >
-                    {!this.state.succesfullTweet ?
                         <React.Fragment>
-                        <h1>What's happening?</h1>
-                        <i onClick={() => this.handleClick()} className="fas fa-times"></i>
-                        <textarea value={this.state.tweet} onChange={(e) => this.handleChange(e)} placeholder="Write a new tweet..." ></textarea>
-                        <button onClick={() => this.postTweet()} className="new-tweet-btn" >Tweet</button>
+                            <h1>What's happening?</h1>
+                            <i onClick={() => this.handleClick()} className="fas fa-times"></i>
+                            <textarea value={this.state.tweet} onChange={(e) => this.handleChange(e)} placeholder="Write a new tweet..." ></textarea>
+                            {this.state.succesfullTweet ? <p className="new-tweet-posted" >New tweet posted!</p> : null}
+                            {tweetBtn}
                         </React.Fragment>
-                    :
-                        <h1>Successfully posted tweet!</h1>}
                 </div>
             </div>
         )
@@ -67,7 +69,8 @@ class NewTweet extends Component {
 
 const mapStateToProps = state => {
     return {
-        username: state.username
+        username: state.username,
+        userId: state.userId
     }
 }
 

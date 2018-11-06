@@ -4,26 +4,29 @@ import UserPlaceholder from '../img/user-placeholder.png';
 class UserInfo extends Component {
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <div className="home-user-img" >
                     <img height="100px" src={UserPlaceholder} />
                     <h2>{this.props.username}</h2>
                 </div>
                 <div className="home-user-data" >
                     <div>
-                        <h4>{this.props.tweets}</h4>
                         <h4>TWEETS</h4>
+                        <h2>{this.props.tweets}</h2>
                     </div>
                     <div>
-                        <h4>{this.props.followers}</h4>
                         <h4>FOLLOWERS</h4>
+                        <h2>{this.props.followers}</h2>
                     </div>
                     <div>
-                        <h4>{this.props.following}</h4>
                         <h4>FOLLOWING</h4>
+                        <h2>{this.props.following}</h2>
                     </div>
                 </div>
-            </div>
+                <div className="compose-new-tweet" >
+                    <input placeholder="Compose new tweet..." type="text" />
+                </div>
+            </React.Fragment>
         )
     }
 }

@@ -1,11 +1,27 @@
 .navbar{
+    position: fixed;
     display: flex;
     align-items: center;
     height: 56px;
     width: 100%;
-    background-color: aliceblue;
+    top: 0;
+    background-color: white;
     justify-content: space-around;
     box-shadow: 0px 1px 10px 1px rgba(112,112,112,0.77);
+}
+
+.new-tweet-logo{
+    color: #00aced;
+    font-size: 1.8em;
+}
+
+.navbar-middle{
+    display: flex;
+}
+
+.navbar-middle i{
+    font-size: 1.6em;
+    color: #1dcaff;
 }
 
 .navbar .navbar-menu a{
@@ -14,7 +30,7 @@
 }
 
 .navbar input{
-    border: 1px solid rgb(0, 162, 255);
+    border: 1px solid rgba(0, 0, 0, 0.178);
     border-radius: 4px;
     background-color: rgba(170, 170, 170, 0.11);
     padding: 8px;
@@ -23,7 +39,7 @@
     font-weight: 400;
     color: rgb(114, 114, 114);
     box-sizing: border-box;
-    flex: 2;
+    width: 20vw;
 }
 
 .navbar img{
@@ -35,7 +51,7 @@
 }
 
 .navbar-title{
-    margin: 0px 12px;
+    margin: 0px 0px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: 400;
     font-size: 1.4em;
@@ -44,7 +60,6 @@
 }
 
 .navbar .navbar-menu{
-    flex: 2;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -69,11 +84,41 @@
     border-bottom: 3px solid rgb(0, 204, 255);
 }
 
-.navbar .navbar-menu i{
-    margin-right: 12px;
+.navbar .navbar-menu .settings-icon{
+    margin: 0px 12px;
 }
 
 .navbar .navbar-menu i:hover{
     cursor: pointer;
+}
+
+.navbar-settings-container{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 4px;
+    position: absolute;
+    top: 100%;
+    right: 0vw;
+    width: 16vw;
+    animation: 0.4s showSettings;
+}
+
+@keyframes showSettings{
+    0%{
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.navbar-settings-container p{
+    border-top: 1px solid gray;
+    padding: 4px 12px;
+    color: rgba(0, 0, 0, 0.534);
+    align-content: center;
+    margin: 0;
 }
 
