@@ -49,4 +49,29 @@
     display: block;
     font-size: 12px;
     font-weight: 100;
+    margin: 12px;
+}
+
+.signup-success{
+    font-size: 1em;
+    top: 200px;
+    border: 1px solid rgb(1, 160, 1);
+    border-radius: 6px;
+    padding: 12px;
+    margin: 12px 0px;
+    background-color: rgba(37, 255, 37, 0.185);
+    color: rgba(2, 92, 2, 0.795);
+    font-weight: 200;
+    animation: showSuccess 0.6s;
+}
+
+@keyframes showSuccess{
+    0%{
+        transform: translate(-40%);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0%);
+        opacity: 1;
+    }
 }

@@ -94,8 +94,11 @@
 
 .navbar-settings-container{
     background-color: white;
-    border: 1px solid gray;
+    border: 01px solid gray;
+    border-top: 0px;
     border-radius: 4px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     position: absolute;
     top: 100%;
     right: 0vw;
@@ -114,11 +117,19 @@
     }
 }
 
-.navbar-settings-container p{
+.navbar-settings-container h6{
     border-top: 1px solid gray;
-    padding: 4px 12px;
+    text-align: center;
+    padding: 8px 12px;
     color: rgba(0, 0, 0, 0.534);
     align-content: center;
     margin: 0;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.navbar-settings-container h6:hover{
+    color: rgba(0, 0, 0, 0.733);
+    cursor: pointer;
 }
 

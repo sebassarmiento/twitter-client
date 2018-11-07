@@ -43,6 +43,8 @@ class Home extends Component {
 
   render() {
 
+    console.log('ACAAA', this.state.data)
+
     const tweets = this.state.data ? this.state.data.map(tweet => {
       return <Tweet key={tweet._id} date={tweet.date} username={tweet.username} tweet={tweet.tweet} />
     }) : <Loader />

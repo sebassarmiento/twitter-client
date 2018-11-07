@@ -17,11 +17,13 @@ const reducer = (state = initialStore, action) => {
         case Actions.LOGIN_FAILURE:
             return state
         case Actions.SIGNUP_SUCCESS:
-            return { ...state, logged: true, username: action.payload.username }
+            return { ...state, logged: true, ...action.payload}
         case Actions.NEW_TWEET:
             return { ...state, newTweet: true }
         case Actions.NEW_TWEET_CLOSE:
             return { ...state, newTweet: false }
+        case Actions.LOGOUT:
+            return {...state, logged: false}
         default:
             return state
     }

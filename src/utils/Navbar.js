@@ -36,6 +36,11 @@ class Navbar extends Component {
     //this.setState({newTweet: true})
   }
 
+  handleLogout(){
+    sessionStorage.removeItem('token')
+    this.props.logout()
+  }
+
   render() {
     return (
       <div className="navbar">
@@ -55,8 +60,8 @@ class Navbar extends Component {
           <NavLink onClick={() => this.handleNavigation('me')} className={this.state.me ? 'navbar-current' : null} to="/profile" ><i className="fas fa-user"></i> Me</NavLink>
           <i onClick={() => this.setState({settings: !this.state.settings})} className="fas fa-cog settings-icon"></i>
           {this.state.settings ? <div className="navbar-settings-container" >
-            <p>Settings</p>
-            <p>Log out</p>
+            <h6>Settings</h6>
+            <h6 onClick={() => this.handleLogout()} >Log out</h6>
           </div> : null}
           {this.props.newTweet ? <NewTweet /> : null}
         </div>
@@ -73,7 +78,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    newTweetFunc: () => dispatch({ type: 'NEW_TWEET' })
+    newTweetFunc: () => dispatch({ type: 'NEW_TWEET' }),
+    logout: () => dispatch({type: 'LOGOUT'})
   }
 }
 
