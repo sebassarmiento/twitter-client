@@ -16,8 +16,9 @@ class SignUp extends Component {
     }
 
     handleSignup() {
+        this.setState({loader: true, emailTaken: false})
         if(this.state.email.indexOf('@') !== -1 && this.state.email.indexOf('.') !== -1){
-            this.setState({loader: true})
+            this.setState({invalidEmail: false})
             fetch('http://localhost:3000/users/signup', {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
@@ -48,7 +49,7 @@ class SignUp extends Component {
                 console.log(err)
             })
         } else {
-            this.setState({invalidEmail: true})
+            this.setState({invalidEmail: true, loader: false})
         }
     }
 

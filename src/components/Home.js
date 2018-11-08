@@ -6,53 +6,70 @@ import { connect } from 'react-redux';
 import UserInfo from '../utils/UserInfo';
 
 class Home extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {}
   }
 
-  componentDidMount(){
+  componentDidMount() {
     let token = sessionStorage.getItem('token')
 
-    fetch(`http://localhost:3000/users/${this.props.userId}`)
-    .then(d => d.json())
-    .then(result => {
-      console.log(result)
-      this.setState({userData: result})
-    })
-    .catch(err => {
-      console.log(err)
-    })
-
-    fetch('http://localhost:3000/tweets', {
+    let tweetsProm = fetch('http://localhost:3000/tweets', {
       method: 'GET',
       headers: {
         'Authorization': token
       }
     })
-    .then(d => d.json())
-    .then(result => {
-      console.log('AQUIAQUI',result)
-      this.setState({data: result})
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then(d => d.json())
+
+    fetch(`http://localhost:3000/users/${this.props.userId}`)
+      .then(d => d.json())
+      .then(result => {
+        console.log(result)
+        this.setState({ userData: result })
+        tweetsProm.then(tweets => {
+          console.log('AQUIAQUI', tweets)
+          this.setState({ data: tweets })
+        })
+          .catch(err => {
+            console.log(err)
+          })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
 
   render() {
 
-    console.log('ACAAA', this.state.data)
+    console.log('ACAAAaaaaaaaa', this.state.data)
 
     const tweets = this.state.data ? this.state.data.map(tweet => {
-      return <Tweet userFavs={this.state.userData.favs} tweetId={tweet._id} key={tweet._id} date={tweet.date} username={tweet.username} tweet={tweet.tweet} />
+      return <Tweet
+        retweet={tweet.retweet}
+        retweetUsername={tweet.retweetUsername}
+        userFavs={this.state.userData.favs}
+        tweetId={tweet._id} key={tweet._id}
+        date={tweet.date} username={tweet.username}
+        tweet={tweet.tweet}
+      />
     }) : <Loader />
 
     return (
       <div className="home-container" >
         <div className="home-column-1" >
-          {this.state.userData ? <UserInfo favsCount={this.state.userData.favs.length} username={this.state.userData.username} tweets={this.state.userData.tweets} following={this.state.userData.following} followers={this.state.userData.followers} /> : null}
+          {
+            this.state.userData ?
+              <UserInfo
+                retweetsCount={this.state.userData.retweetsCount}
+                favsCount={this.state.userData.favs.length}
+                username={this.state.userData.username}
+                tweets={this.state.userData.tweets}
+                following={this.state.userData.following}
+                followers={this.state.userData.followers}
+              /> : null
+          }
         </div>
         <div className="home-column-2" >
           <h1>Tweets</h1>

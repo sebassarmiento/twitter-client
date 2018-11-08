@@ -61,3 +61,44 @@
     0%{opacity: 0;}
     100%{opacity: 1;}
 }
+
+.retweeted-text{
+    font-family: Arial, sans-serif;
+    font-weight: 100;
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.521);
+    margin: 0;
+    padding: 0;
+}
+
+.success-retweet{
+    font-size: 1em;
+    position: fixed;
+    z-index: 1000;
+    top: 10vh;
+    right: 4vw;
+    border: 1px solid rgb(1, 160, 1);
+    border-radius: 6px;
+    padding: 12px;
+    margin: 12px 0px;
+    background-color: rgba(0, 170, 0, 0.308) !important;
+    color: rgba(2, 92, 2, 0.795);
+    font-weight: 200;
+    animation: showSuccessRetweet 0.6s;
+}
+
+@keyframes showSuccessRetweet{
+    0%{
+        transform: translate(100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0%);
+        opacity: 1;
+    }
+    0%{
+        transform: translate(100%);
+        opacity: 0;
+    }
+}
+

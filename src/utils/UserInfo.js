@@ -6,7 +6,7 @@ class UserInfo extends Component {
         return (
             <React.Fragment>
                 <div className="home-user-img" >
-                    <img height="100px" src={UserPlaceholder} />
+                    <img alt="user-img" height="100px" src={UserPlaceholder} />
                     <h2>{this.props.username}</h2>
                 </div>
                 <div className="home-user-data" >
@@ -20,7 +20,7 @@ class UserInfo extends Component {
                     </div>
                     <div>
                         <h4>RETWEETS</h4>
-                        <h2>{this.props.followers}</h2>
+                        <h2>{this.props.retweetsCount}</h2>
                     </div>
                     
                 </div>
