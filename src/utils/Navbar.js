@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import WriteLogo from '../img/write-icon.png';
 import '../css/navbar.css';
 import { connect } from 'react-redux';
 import NewTweet from './NewTweetModal';
@@ -45,7 +44,7 @@ class Navbar extends Component {
     return (
       <div className="navbar">
         <div className="navbar-menu">
-          <p className="navbar-title" >Twitter</p>
+          <p className="navbar-title" >Retwitt</p>
           <input placeholder="Search..." type="text" />
           <i onClick={() => this.newTweet()} className="fas fa-pen-square new-tweet-logo"></i>
         </div>

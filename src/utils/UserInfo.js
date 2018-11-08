@@ -15,13 +15,14 @@ class UserInfo extends Component {
                         <h2>{this.props.tweets}</h2>
                     </div>
                     <div>
-                        <h4>FOLLOWERS</h4>
-                        <h2>{this.props.followers}</h2>
+                        <h4>FAVORITES</h4>
+                        <h2>{this.props.favsCount}</h2>
                     </div>
                     <div>
-                        <h4>FOLLOWING</h4>
-                        <h2>{this.props.following}</h2>
+                        <h4>RETWEETS</h4>
+                        <h2>{this.props.followers}</h2>
                     </div>
+                    
                 </div>
                 <div className="compose-new-tweet" >
                     <input placeholder="Compose new tweet..." type="text" />

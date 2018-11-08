@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import '../css/signup.css';
 import { connect } from 'react-redux';
 import Redirect from '../utils/Redirect';
+import Loader from '../utils/Loader';
 
 class SignUp extends Component {
     constructor() {
@@ -15,7 +16,9 @@ class SignUp extends Component {
     }
 
     handleSignup() {
-        fetch('http://localhost:3000/users/signup', {
+        if(this.state.email.indexOf('@') !== -1 && this.state.email.indexOf('.') !== -1){
+            this.setState({loader: true})
+            fetch('http://localhost:3000/users/signup', {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
                 'Accept': 'application/json'
@@ -29,9 +32,10 @@ class SignUp extends Component {
         })
             .then(d => d.json())
             .then(result => {
+                this.setState({loader: false})
                 console.log(result)
                 if (result.message === 'Created user successfully') {
-                    this.setState({createdUser: true})
+                    this.setState({createdUser: true, invalidEmail: false, emailTaken: false})
                     setTimeout(() => {
                         this.setState({redirect: true})
                     }, 2000)
@@ -43,6 +47,9 @@ class SignUp extends Component {
             .catch(err => {
                 console.log(err)
             })
+        } else {
+            this.setState({invalidEmail: true})
+        }
     }
 
     handleChange(e) {
@@ -74,7 +81,13 @@ class SignUp extends Component {
                     this.state.createdUser ? <h2 className="signup-success" >Created user succesfully <i className="fas fa-check-circle"></i></h2> : null
                 }
                 {
+                    this.state.loader ? <Loader /> : null
+                }
+                {
                     this.state.emailTaken ? <p className="invalid-data" >Email is already taken</p> : null
+                }
+                {
+                    this.state.invalidEmail ? <p className="invalid-data" >Please enter a valid email</p> : null
                 }
                 <p>Already have an account? <NavLink to="/" >Log in</NavLink></p>
                 {

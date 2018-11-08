@@ -32,7 +32,7 @@ class Home extends Component {
     })
     .then(d => d.json())
     .then(result => {
-      console.log(result)
+      console.log('AQUIAQUI',result)
       this.setState({data: result})
     })
     .catch(err => {
@@ -46,13 +46,13 @@ class Home extends Component {
     console.log('ACAAA', this.state.data)
 
     const tweets = this.state.data ? this.state.data.map(tweet => {
-      return <Tweet key={tweet._id} date={tweet.date} username={tweet.username} tweet={tweet.tweet} />
+      return <Tweet userFavs={this.state.userData.favs} tweetId={tweet._id} key={tweet._id} date={tweet.date} username={tweet.username} tweet={tweet.tweet} />
     }) : <Loader />
 
     return (
       <div className="home-container" >
         <div className="home-column-1" >
-          {this.state.userData ? <UserInfo username={this.state.userData.username} tweets={this.state.userData.tweets} following={this.state.userData.following} followers={this.state.userData.followers} /> : null}
+          {this.state.userData ? <UserInfo favsCount={this.state.userData.favs.length} username={this.state.userData.username} tweets={this.state.userData.tweets} following={this.state.userData.following} followers={this.state.userData.followers} /> : null}
         </div>
         <div className="home-column-2" >
           <h1>Tweets</h1>

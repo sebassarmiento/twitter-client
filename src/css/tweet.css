@@ -51,3 +51,13 @@
     cursor: pointer;
     color: rgba(0, 0, 0, 0.705);
 }
+
+.fav-icon{
+    color: rgb(255, 208, 0) !important;
+    animation: 0.2s favIcon;
+}
+
+@keyframes favIcon{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}

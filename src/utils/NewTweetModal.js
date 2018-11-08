@@ -54,13 +54,13 @@ class NewTweet extends Component {
         return (
             <div className="new-tweet-background">
                 <div className="new-tweet-container" >
-                        <React.Fragment>
-                            <h1>What's happening?</h1>
-                            <i onClick={() => this.handleClick()} className="fas fa-times"></i>
-                            <textarea value={this.state.tweet} onChange={(e) => this.handleChange(e)} placeholder="Write a new tweet..." ></textarea>
-                            {this.state.succesfullTweet ? <p className="new-tweet-posted" >New tweet posted!</p> : null}
-                            {tweetBtn}
-                        </React.Fragment>
+                    <React.Fragment>
+                        <h1>What's happening?</h1>
+                        <i onClick={() => this.handleClick()} className="fas fa-times"></i>
+                        <textarea value={this.state.tweet} onChange={(e) => this.handleChange(e)} placeholder="Write a new tweet..." ></textarea>
+                        {this.state.succesfullTweet ? <p className="new-tweet-posted" >New tweet posted!</p> : null}
+                        {tweetBtn}
+                    </React.Fragment>
                 </div>
             </div>
         )

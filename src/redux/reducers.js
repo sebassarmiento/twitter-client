@@ -12,7 +12,8 @@ const reducer = (state = initialStore, action) => {
                 logged: true,
                 token: action.payload.token,
                 userId: action.payload.userId,
-                username: action.payload.username
+                username: action.payload.username,
+                favs: action.payload.favs
             }
         case Actions.LOGIN_FAILURE:
             return state

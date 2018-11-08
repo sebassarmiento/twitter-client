@@ -61,6 +61,7 @@
 }
 
 .new-tweet-btn{
+    display: block;
     float: right;
     border: none;
     border-radius: 6px;

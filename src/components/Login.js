@@ -31,10 +31,10 @@ class Login extends Component {
         .then(d => d.json())
         .then(result => {
           this.setState({ loginTry: false })
-          console.log('ACAAAA',result)
+          console.log('AQUIIIII',result)
           if (result.token) {
             sessionStorage.setItem('token', result.token)
-            this.props.login(result.token, result.userId, result.username)
+            this.props.login(result.token, result.userId, result.username, result.favs)
           }
           if (result.message === 'Login failure') {
             this.setState({ loginFailure: true })
@@ -76,7 +76,7 @@ class Login extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (token, userId, username) => dispatch({ type: 'LOGIN_SUCCESS', payload: {token, userId, username} })
+    login: (token, userId, username, favs) => dispatch({ type: 'LOGIN_SUCCESS', payload: {token, userId, username, favs} })
   }
 }
 
