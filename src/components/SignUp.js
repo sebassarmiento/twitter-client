@@ -4,6 +4,7 @@ import '../css/signup.css';
 import { connect } from 'react-redux';
 import Redirect from '../utils/Redirect';
 import Loader from '../utils/Loader';
+import Logo from '../img/logo.png'
 
 class SignUp extends Component {
     constructor() {
@@ -63,37 +64,45 @@ class SignUp extends Component {
         const disabledSignupBtn = <button className="signup-btn-disabled" >Sign up</button>
 
         return (
-            <div className="signup-container" >
-                <h1>Sign up</h1>
-                <input onChange={e => this.handleChange(e)} value={this.state.email} name="email" type="text" placeholder="Email" />
-                <input onChange={e => this.handleChange(e)} value={this.state.username} name="username" type="text" placeholder="Username" />
-                <input onChange={e => this.handleChange(e)} value={this.state.password} name="password" type="password" placeholder="Password" />
-                <span className="fields-required-text" >* All fields are required</span>
-                {
-                    this.state.email.length > 3
-                        &&
-                        this.state.username.length > 1
-                        &&
-                        this.state.password.length > 3
-                        ?
-                        signupBtn : disabledSignupBtn
-                }
-                {
-                    this.state.createdUser ? <h2 className="signup-success" >Created user succesfully <i className="fas fa-check-circle"></i></h2> : null
-                }
-                {
-                    this.state.loader ? <Loader /> : null
-                }
-                {
-                    this.state.emailTaken ? <p className="invalid-data" >Email is already taken</p> : null
-                }
-                {
-                    this.state.invalidEmail ? <p className="invalid-data" >Please enter a valid email</p> : null
-                }
-                <p>Already have an account? <NavLink to="/" >Log in</NavLink></p>
-                {
-                    this.state.redirect ? <Redirect /> : null
-                }
+            <div className="signup-full-container" >
+                <div className="signup-container" >
+                <div className="signup-1" >
+                    <img src={Logo} />
+                    <p>Already have an account?</p>
+                    <NavLink to="/" >Log in</NavLink>
+                </div>
+                <div className="signup-2" >
+                    <h1>Sign up</h1>
+                    <input onChange={e => this.handleChange(e)} value={this.state.email} name="email" type="text" placeholder="Email" />
+                    <input onChange={e => this.handleChange(e)} value={this.state.username} name="username" type="text" placeholder="Username" />
+                    <input onChange={e => this.handleChange(e)} value={this.state.password} name="password" type="password" placeholder="Password" />
+                    <span className="fields-required-text" >* All fields are required</span>
+                    {
+                        this.state.email.length > 3
+                            &&
+                            this.state.username.length > 1
+                            &&
+                            this.state.password.length > 3
+                            ?
+                            signupBtn : disabledSignupBtn
+                    }
+                    {
+                        this.state.createdUser ? <h2 className="signup-success" >Created user succesfully <i className="fas fa-check-circle"></i></h2> : null
+                    }
+                    {
+                        this.state.loader ? <Loader /> : null
+                    }
+                    {
+                        this.state.emailTaken ? <p className="invalid-data" >Email is already taken</p> : null
+                    }
+                    {
+                        this.state.invalidEmail ? <p className="invalid-data" >Please enter a valid email</p> : null
+                    }
+                    {
+                        this.state.redirect ? <Redirect /> : null
+                    }
+                </div>
+            </div>
             </div>
         )
     }

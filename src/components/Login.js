@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import '../css/login.css';
 import { connect } from 'react-redux';
 import Loader from '../utils/Loader';
+import Logo from '../img/logo.png'
 
 class Login extends Component {
   constructor() {
@@ -60,15 +61,23 @@ class Login extends Component {
     const invalidText = <p className="invalid-data" >Invalid username or password</p>
 
     return (
-      <div className="login-container" >
-        <h1>LOGIN</h1>
-        <input onChange={e => this.handleChange(e)} value={this.state.email} name="email" type="text" placeholder="Email" />
-        {this.state.invalidEmail ? <span className="invalid-data" >Please enter a valid email adress</span> : null}
-        <input onChange={e => this.handleChange(e)} value={this.state.password} name="password" type="password" placeholder="Password" />
-        {this.state.loginFailure ? invalidText : null}
-        {this.state.loginTry ? <Loader /> : null}
-        {this.state.email.length > 3 && this.state.password.length > 3 ? loginBtn : disabledLoginBtn}
-        <p>Don't have an account? <NavLink to="/signup" >Sign up</NavLink></p>
+      <div className="login-full-container" >
+        <div className="login-container" >
+          <div className="login-1" >
+            <img src={Logo} />
+            <p>Don't have an account?</p>
+            <NavLink to="/signup" >Sign up</NavLink>
+          </div>
+          <div className="login-2" >
+            <h1>Login</h1>
+            <input onChange={e => this.handleChange(e)} value={this.state.email} name="email" type="text" placeholder="Email" />
+            {this.state.invalidEmail ? <span className="invalid-data" >Please enter a valid email adress</span> : null}
+            <input onChange={e => this.handleChange(e)} value={this.state.password} name="password" type="password" placeholder="Password" />
+            {this.state.loginFailure ? invalidText : null}
+            {this.state.loginTry ? <Loader /> : null}
+            {this.state.email.length > 3 && this.state.password.length > 3 ? loginBtn : disabledLoginBtn}
+          </div>
+        </div>
       </div>
     )
   }
