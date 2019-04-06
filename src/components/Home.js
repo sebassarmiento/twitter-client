@@ -22,7 +22,7 @@ class Home extends Component {
     })
       .then(d => d.json())
 
-    fetch(`https://retwittapi.herokuapp.com/users/${this.props.userId}`)
+    fetch(`http://retwittapi.herokuapp.com/users/${this.props.userId}`)
       .then(d => d.json())
       .then(result => {
         console.log(result)
