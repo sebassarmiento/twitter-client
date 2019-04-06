@@ -64,7 +64,7 @@ class Login extends Component {
       <div className="login-full-container" >
         <div className="login-container" >
           <div className="login-1" >
-            <img src={Logo} />
+            <img src={Logo} alt="twitter" />
             <p>Don't have an account?</p>
             <NavLink to="/signup" >Sign up</NavLink>
           </div>
