@@ -22,7 +22,7 @@ class Home extends Component {
     })
       .then(d => d.json())
 
-    fetch(`http://retwittapi.herokuapp.com/users/${this.props.userId}`)
+    fetch(`https://retwittapi.herokuapp.com/users/${this.props.userId}`)
       .then(d => d.json())
       .then(result => {
         console.log(result)
@@ -59,17 +59,19 @@ class Home extends Component {
     return (
       <div className="home-container" >
         <div className="home-column-1" >
-          {
-            this.state.userData ?
-              <UserInfo
-                retweetsCount={this.state.userData.retweetsCount}
-                favsCount={this.state.userData.favs.length}
-                username={this.state.userData.username}
-                tweets={this.state.userData.tweets}
-                following={this.state.userData.following}
-                followers={this.state.userData.followers}
-              /> : null
-          }
+          <div className="user-info" >
+            {
+              this.state.userData ?
+                <UserInfo
+                  retweetsCount={this.state.userData.retweetsCount}
+                  favsCount={this.state.userData.favs.length}
+                  username={this.state.userData.username}
+                  tweets={this.state.userData.tweets}
+                  following={this.state.userData.following}
+                  followers={this.state.userData.followers}
+                /> : null
+            }
+          </div>
         </div>
         <div className="home-column-2" >
           <h1>Tweets</h1>

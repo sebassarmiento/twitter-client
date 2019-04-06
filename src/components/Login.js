@@ -19,7 +19,7 @@ class Login extends Component {
       this.setState({invalidEmail: true})
     } else {
       this.setState({ loginFailure: false, loginTry: true , invalidEmail: false})
-      fetch('http://retwittapi.herokuapp.com/users/login', {
+      fetch('https://retwittapi.herokuapp.com/users/login', {
         headers: {
           'Content-Type': 'application/json'
         },
