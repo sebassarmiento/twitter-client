@@ -20,7 +20,7 @@ class SignUp extends Component {
         this.setState({loader: true, emailTaken: false})
         if(this.state.email.indexOf('@') !== -1 && this.state.email.indexOf('.') !== -1){
             this.setState({invalidEmail: false})
-            fetch('http://localhost:3000/users/signup', {
+            fetch('https://retwittapi.herokuapp.com/users/signup', {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
                 'Accept': 'application/json'

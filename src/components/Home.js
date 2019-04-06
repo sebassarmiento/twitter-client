@@ -14,7 +14,7 @@ class Home extends Component {
   componentDidMount() {
     let token = sessionStorage.getItem('token')
 
-    let tweetsProm = fetch('http://localhost:3000/tweets', {
+    let tweetsProm = fetch('https://retwittapi.herokuapp.com/tweets', {
       method: 'GET',
       headers: {
         'Authorization': token
@@ -22,7 +22,7 @@ class Home extends Component {
     })
       .then(d => d.json())
 
-    fetch(`http://localhost:3000/users/${this.props.userId}`)
+    fetch(`https://retwittapi.herokuapp.com/users/${this.props.userId}`)
       .then(d => d.json())
       .then(result => {
         console.log(result)
